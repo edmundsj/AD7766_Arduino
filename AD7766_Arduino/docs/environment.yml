@@ -1,0 +1,7 @@
+dependencies:
+  - sphinx
+  - sphinx_rtd_theme
+  - doxygen
+  - breathe
+  - pip:
+    - exhale
