@@ -40,9 +40,9 @@ extensions = [
 ]
 # Setup the breathe extension
 breathe_projects = {
-    project: "./doxyoutput/xml"
+    "My Project": "./doxyoutput/xml"
 }
-breathe_default_project = project
+breathe_default_project = "My Project"
 
 # Setup the exhale extension
 exhale_args = {

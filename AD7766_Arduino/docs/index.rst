@@ -11,7 +11,7 @@ An SCPI-based communication interface for an Arduino used as a data aquisition c
    :maxdepth: 2
    :caption: Contents:
 
-    api/library_root
+   api/library_root.rst
 
 Indices and tables
 ==================

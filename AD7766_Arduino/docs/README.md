@@ -114,12 +114,12 @@ To actually use the pretty RTD theme we previously installed, we need to change 
 html_theme = 'sphinx_rtd_theme'
 ```
 
-And, to insert all the generated documentation indo our index file, we need only add the following in our index.rst file (the newline between the contents and the api line is important!):
+And, to insert all the generated documentation indo our index file, we need only add the following in our index.rst file (the newline between the contents and the api line is important! Indentation is also critical):
 ```
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-    api/library_root
+   api/library_root
 ```
 Finally, if you want to upload documentation to the web via RTD (which I do), create a new project on [RTD](https://readthedocs.org/) with the git repository. Make sure the repository is public. Then, go to "Settings -> Admin -> Integrations", and make sure the github webhook is there.
