@@ -3,9 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - alabaster=0.7.12=py37_0
   - breathe
-  - docutils=0.16=py37_1
   - doxygen
   - pip
   - sphinx
@@ -17,7 +15,4 @@ dependencies:
   - sphinxcontrib-qthelp=1.0.3=py_0
   - sphinxcontrib-serializinghtml=1.1.4=py_0
   - pip:
-    - exhale==0.2.3
-    - gdspy==1.5.2
-    - lxml==4.5.2
-    - soupsieve==2.0.1
+    - exhale

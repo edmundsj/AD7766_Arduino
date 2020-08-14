@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Arduino AD7766 SCPI's documentation!
+Arduino AD7766 SCPI
 ===============================================
+An SCPI-based communication interface for an Arduino used as a data aquisition card (DAQ) with an Analog Devices AD7766 ADC.
 
 .. toctree::
    :maxdepth: 2
