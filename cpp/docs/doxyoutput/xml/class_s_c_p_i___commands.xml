@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.19" xml:lang="en-US">
+  <compounddef id="class_s_c_p_i___commands" kind="class" language="C++" prot="public">
+    <compoundname>SCPI_Commands</compoundname>
+    <basecompoundref refid="class_s_c_p_i___string___array" prot="public" virt="non-virtual">SCPI_String_Array</basecompoundref>
+    <includes refid="_vrekrer__scpi__parser_8h" local="no">Vrekrer_scpi_parser.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_s_c_p_i___commands_1a985b6f9fc38d290d0589438e596c0d57" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* SCPI_Commands::not_processed_message</definition>
+        <argsstring></argsstring>
+        <name>not_processed_message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pointer to unprocessed string </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="47" column="8" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_s_c_p_i___commands_1a300bc362ffe9fbdd6a76489c7924e84b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SCPI_Commands::SCPI_Commands</definition>
+        <argsstring>()</argsstring>
+        <name>SCPI_Commands</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor for SCPI Commands class </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="44" column="3" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_c_p_i___commands_1a69120b2e8fad899f063e92a494c5e325" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SCPI_Commands::SCPI_Commands</definition>
+        <argsstring>(char *message)</argsstring>
+        <name>SCPI_Commands</name>
+        <param>
+          <type>char *</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor for SCPI Commands class <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input message sent to the Arduino device from an external source (i.e. a PC) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="45" column="3" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="77" bodyend="95"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class which handles SCPI commands. Takes an input SCPI message and parses it to extract the commands What kind of command structure does this assume? </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>SCPI_String_Array</label>
+        <link refid="class_s_c_p_i___string___array"/>
+      </node>
+      <node id="1">
+        <label>SCPI_Commands</label>
+        <link refid="class_s_c_p_i___commands"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>SCPI_String_Array</label>
+        <link refid="class_s_c_p_i___string___array"/>
+      </node>
+      <node id="1">
+        <label>SCPI_Commands</label>
+        <link refid="class_s_c_p_i___commands"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="42" column="1" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.h" bodystart="42" bodyend="48"/>
+    <listofallmembers>
+      <member refid="class_s_c_p_i___string___array_1ac3ea456c13206c08abe997a47e36579c" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>Append</name></member>
+      <member refid="class_s_c_p_i___string___array_1aec158b60997a7b3d6899ef00f3aaa135" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>First</name></member>
+      <member refid="class_s_c_p_i___string___array_1a50751e9f768863d884dbfa6681e1bbe7" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>Last</name></member>
+      <member refid="class_s_c_p_i___commands_1a985b6f9fc38d290d0589438e596c0d57" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>not_processed_message</name></member>
+      <member refid="class_s_c_p_i___string___array_1af838aa0cd5fc8937ed58599a1ab2e9cd" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>operator[]</name></member>
+      <member refid="class_s_c_p_i___string___array_1adea7e540495974035cc2f4fed122e979" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>Pop</name></member>
+      <member refid="class_s_c_p_i___commands_1a300bc362ffe9fbdd6a76489c7924e84b" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>SCPI_Commands</name></member>
+      <member refid="class_s_c_p_i___commands_1a69120b2e8fad899f063e92a494c5e325" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>SCPI_Commands</name></member>
+      <member refid="class_s_c_p_i___string___array_1ac590e8f3275c0e14a9df1a3bdb4cbdab" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>SCPI_String_Array</name></member>
+      <member refid="class_s_c_p_i___string___array_1a80153f2aab64f399edb2db2b4fc8fc1f" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>Size</name></member>
+      <member refid="class_s_c_p_i___string___array_1a4fd461e0c8a5333b3eb1211874af61a9" prot="protected" virt="non-virtual"><scope>SCPI_Commands</scope><name>size_</name></member>
+      <member refid="class_s_c_p_i___string___array_1aca439076590132f16ac241bc4840d6b6" prot="protected" virt="non-virtual"><scope>SCPI_Commands</scope><name>values_</name></member>
+      <member refid="class_s_c_p_i___string___array_1a56b85135e4bb27864a1955c5a020b372" prot="public" virt="non-virtual"><scope>SCPI_Commands</scope><name>~SCPI_String_Array</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -123,3 +123,5 @@ And, to insert all the generated documentation indo our index file, we need only
    api/library_root
 ```
 Finally, if you want to upload documentation to the web via RTD (which I do), create a new project on [RTD](https://readthedocs.org/) with the git repository. Make sure the repository is public. Then, go to "Settings -> Admin -> Integrations", and make sure the github webhook is there.
+
+Unfortunately, it looks like none of this actually works, because why would it actually work?

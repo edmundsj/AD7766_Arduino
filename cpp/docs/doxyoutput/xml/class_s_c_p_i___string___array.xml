@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.19" xml:lang="en-US">
+  <compounddef id="class_s_c_p_i___string___array" kind="class" language="C++" prot="public">
+    <compoundname>SCPI_String_Array</compoundname>
+    <derivedcompoundref refid="class_s_c_p_i___commands" prot="public" virt="non-virtual">SCPI_Commands</derivedcompoundref>
+    <derivedcompoundref refid="class_s_c_p_i___parameters" prot="public" virt="non-virtual">SCPI_Parameters</derivedcompoundref>
+    <includes refid="_vrekrer__scpi__parser_8h" local="no">Vrekrer_scpi_parser.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_s_c_p_i___string___array_1a4fd461e0c8a5333b3eb1211874af61a9" prot="protected" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t SCPI_String_Array::size_</definition>
+        <argsstring></argsstring>
+        <name>size_</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of strings (?) or is it the number of characters </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="35" column="11" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_s_c_p_i___string___array_1aca439076590132f16ac241bc4840d6b6" prot="protected" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* SCPI_String_Array::values_[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>values_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="36" column="8" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_s_c_p_i___string___array_1ac590e8f3275c0e14a9df1a3bdb4cbdab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SCPI_String_Array::SCPI_String_Array</definition>
+        <argsstring>()</argsstring>
+        <name>SCPI_String_Array</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>SCPI String Array Constructor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="25" column="3" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="9" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_c_p_i___string___array_1a56b85135e4bb27864a1955c5a020b372" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SCPI_String_Array::~SCPI_String_Array</definition>
+        <argsstring>()</argsstring>
+        <name>~SCPI_String_Array</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>SCPI String Array Destructor <linebreak/>
+ </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="26" column="3" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_c_p_i___string___array_1af838aa0cd5fc8937ed58599a1ab2e9cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * SCPI_String_Array::operator[]</definition>
+        <argsstring>(const byte index)</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type>const byte</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>I have no idea what this does, or what operator[] means, or what the arguments do <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Some argument I don&apos;t understand </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="27" column="8" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="17" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_c_p_i___string___array_1ac3ea456c13206c08abe997a47e36579c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SCPI_String_Array::Append</definition>
+        <argsstring>(char *value)</argsstring>
+        <name>Append</name>
+        <param>
+          <type>char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Append a single character to the string array (can this append an array of characters? I don&apos;t know <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to the character to be appended </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="28" column="8" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="24" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_c_p_i___string___array_1adea7e540495974035cc2f4fed122e979" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * SCPI_String_Array::Pop</definition>
+        <argsstring>()</argsstring>
+        <name>Pop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pop the most recently-added string array (?) <simplesect kind="return"><para>pointer to the string array. NULL if there are no strings to pop. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="29" column="8" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="34" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_c_p_i___string___array_1aec158b60997a7b3d6899ef00f3aaa135" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * SCPI_String_Array::First</definition>
+        <argsstring>()</argsstring>
+        <name>First</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the first character array to be added to the stack <simplesect kind="return"><para>Pointer to the character array. NULL if no such value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="30" column="8" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="46" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_c_p_i___string___array_1a50751e9f768863d884dbfa6681e1bbe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * SCPI_String_Array::Last</definition>
+        <argsstring>()</argsstring>
+        <name>Last</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the last (most recent) character array to be added to the stack <simplesect kind="return"><para>Pointer to the last-added character array </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="31" column="8" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="57" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_c_p_i___string___array_1a80153f2aab64f399edb2db2b4fc8fc1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t SCPI_String_Array::Size</definition>
+        <argsstring>()</argsstring>
+        <name>Size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of strings that have been added to the string stack </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="32" column="11" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.cpp" bodystart="66" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Class which contains methods for storing and retrieving individual SCPI commands and parameters, which are handled as strings (character arrays). </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>SCPI_Parameters</label>
+        <link refid="class_s_c_p_i___parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SCPI_String_Array</label>
+        <link refid="class_s_c_p_i___string___array"/>
+      </node>
+      <node id="2">
+        <label>SCPI_Commands</label>
+        <link refid="class_s_c_p_i___commands"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="AD7766_Arduino/Vrekrer_scpi_parser.h" line="23" column="1" bodyfile="AD7766_Arduino/Vrekrer_scpi_parser.h" bodystart="23" bodyend="37"/>
+    <listofallmembers>
+      <member refid="class_s_c_p_i___string___array_1ac3ea456c13206c08abe997a47e36579c" prot="public" virt="non-virtual"><scope>SCPI_String_Array</scope><name>Append</name></member>
+      <member refid="class_s_c_p_i___string___array_1aec158b60997a7b3d6899ef00f3aaa135" prot="public" virt="non-virtual"><scope>SCPI_String_Array</scope><name>First</name></member>
+      <member refid="class_s_c_p_i___string___array_1a50751e9f768863d884dbfa6681e1bbe7" prot="public" virt="non-virtual"><scope>SCPI_String_Array</scope><name>Last</name></member>
+      <member refid="class_s_c_p_i___string___array_1af838aa0cd5fc8937ed58599a1ab2e9cd" prot="public" virt="non-virtual"><scope>SCPI_String_Array</scope><name>operator[]</name></member>
+      <member refid="class_s_c_p_i___string___array_1adea7e540495974035cc2f4fed122e979" prot="public" virt="non-virtual"><scope>SCPI_String_Array</scope><name>Pop</name></member>
+      <member refid="class_s_c_p_i___string___array_1ac590e8f3275c0e14a9df1a3bdb4cbdab" prot="public" virt="non-virtual"><scope>SCPI_String_Array</scope><name>SCPI_String_Array</name></member>
+      <member refid="class_s_c_p_i___string___array_1a80153f2aab64f399edb2db2b4fc8fc1f" prot="public" virt="non-virtual"><scope>SCPI_String_Array</scope><name>Size</name></member>
+      <member refid="class_s_c_p_i___string___array_1a4fd461e0c8a5333b3eb1211874af61a9" prot="protected" virt="non-virtual"><scope>SCPI_String_Array</scope><name>size_</name></member>
+      <member refid="class_s_c_p_i___string___array_1aca439076590132f16ac241bc4840d6b6" prot="protected" virt="non-virtual"><scope>SCPI_String_Array</scope><name>values_</name></member>
+      <member refid="class_s_c_p_i___string___array_1a56b85135e4bb27864a1955c5a020b372" prot="public" virt="non-virtual"><scope>SCPI_String_Array</scope><name>~SCPI_String_Array</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

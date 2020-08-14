@@ -14,17 +14,12 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-#import subprocess, os
-
-#ead_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
-#f read_the_docs_build:
-#   subprocess.call('cd ../doxygen; doxygen', shell=True)
 
 # -- Project information -----------------------------------------------------
 
-project = 'Arduino AD7766 SCPI'
-copyright = '2020, Jordan Edmunds'
-author = 'Jordan Edmunds'
+project = 'Arduino SCPI'
+copyright = '2020, Verkrer'
+author = 'Verkrer'
 master_doc = 'index'
 
 
@@ -34,10 +29,12 @@ master_doc = 'index'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    # there may be others here already, e.g. 'sphinx.ext.mathjax'
     'breathe',
     'exhale',
     'sphinx_rtd_theme',
 ]
+
 # Setup the breathe extension
 breathe_projects = {
     "My Project": "./doxyoutput/xml"
@@ -56,7 +53,7 @@ exhale_args = {
     # TIP: if using the sphinx-bootstrap-theme, you need
     # "treeViewIsBootstrap": True,
     "exhaleExecutesDoxygen": True,
-    "exhaleDoxygenStdin":    "INPUT = ../src"
+    "exhaleDoxygenStdin":    "INPUT = ../AD7766_Arduino"
 }
 
 # Tell sphinx what the primary language being documented is.
