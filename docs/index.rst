@@ -41,7 +41,11 @@ Once those files are there, you have installed all the dependencies needed for t
 
     git clone https://github.com/edmundsj/AD7766_Arduino.git
 
-The Arduino sketch is located in the "AD7766_Arduino" folder. Open the .ino file inside this sketch, and upload it to the Arduino you are using (mine was tested on an Arduino Uno and will be tested an an Arduino Due). If you open the Serial monitor, you can now type SCPI commands, they will be parsed, and the Arduino will respond to them. For example typing
+The Arduino sketch is located in the "AD7766_Arduino" folder. Open the .ino file inside this sketch, and upload it to the Arduino you are using (mine was tested on an Arduino Uno and will be tested an an Arduino Due). 
+
+Example Use
+------------
+If you open the Serial monitor, you can now type SCPI commands, they will be parsed, and the Arduino will respond to them. For example typing
 
 .. code-block:: bash
 
