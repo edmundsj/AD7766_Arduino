@@ -20,9 +20,9 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_AD7766_Arduino_Vrekrer_scpi_parser.cpp.rst
+   file_AD7766_Arduino_AD7766.cpp.rst
 
 .. toctree::
    :maxdepth: 5
 
-   file_AD7766_Arduino_Vrekrer_scpi_parser.h.rst
+   file_AD7766_Arduino_AD7766.h.rst

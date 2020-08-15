@@ -2,8 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.19" xml:lang="en-US">
   <compounddef id="dir_5211f97ef3491fdbaab77dc04374af4a" kind="dir">
     <compoundname>AD7766_Arduino</compoundname>
-    <innerfile refid="_vrekrer__scpi__parser_8cpp">Vrekrer_scpi_parser.cpp</innerfile>
-    <innerfile refid="_vrekrer__scpi__parser_8h">Vrekrer_scpi_parser.h</innerfile>
+    <innerfile refid="_a_d7766_8cpp">AD7766.cpp</innerfile>
+    <innerfile refid="_a_d7766_8h">AD7766.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

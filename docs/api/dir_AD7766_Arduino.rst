@@ -11,7 +11,7 @@ Directory Arduino
 Files
 -----
 
-- :ref:`file_AD7766_Arduino_Vrekrer_scpi_parser.cpp`
-- :ref:`file_AD7766_Arduino_Vrekrer_scpi_parser.h`
+- :ref:`file_AD7766_Arduino_AD7766.cpp`
+- :ref:`file_AD7766_Arduino_AD7766.h`
 
 

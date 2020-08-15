@@ -1,55 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.19" xml:lang="en-US">
-  <compound refid="class_s_c_p_i___commands" kind="class"><name>SCPI_Commands</name>
-    <member refid="class_s_c_p_i___commands_1a985b6f9fc38d290d0589438e596c0d57" kind="variable"><name>not_processed_message</name></member>
-    <member refid="class_s_c_p_i___commands_1a300bc362ffe9fbdd6a76489c7924e84b" kind="function"><name>SCPI_Commands</name></member>
-    <member refid="class_s_c_p_i___commands_1a69120b2e8fad899f063e92a494c5e325" kind="function"><name>SCPI_Commands</name></member>
+  <compound refid="class_a_d7766" kind="class"><name>AD7766</name>
+    <member refid="class_a_d7766_1ab67848539ca6b4aeecf398acb03680bf" kind="function"><name>AD7766</name></member>
   </compound>
-  <compound refid="class_s_c_p_i___parameters" kind="class"><name>SCPI_Parameters</name>
-    <member refid="class_s_c_p_i___parameters_1a4f61bf9ac392d3a66a886db4df42db4a" kind="variable"><name>not_processed_message</name></member>
-    <member refid="class_s_c_p_i___parameters_1ae0e631f22d962c9d9973b78bf471f2a4" kind="function"><name>SCPI_Parameters</name></member>
-    <member refid="class_s_c_p_i___parameters_1afd0e49f8455af3611bcf2a749ddbca7f" kind="function"><name>SCPI_Parameters</name></member>
+  <compound refid="_a_d7766_8cpp" kind="file"><name>AD7766.cpp</name>
   </compound>
-  <compound refid="class_s_c_p_i___parser" kind="class"><name>SCPI_Parser</name>
-    <member refid="class_s_c_p_i___parser_1a26fa50abbfcad4a5df6bf46833ea62a1" kind="variable"><name>tokens_size_</name></member>
-    <member refid="class_s_c_p_i___parser_1a5a055bdf0075d8848b6133194924faa0" kind="variable"><name>tokens_</name></member>
-    <member refid="class_s_c_p_i___parser_1ac836f5571f1c3c6c7887b80bd050de77" kind="variable"><name>codes_size_</name></member>
-    <member refid="class_s_c_p_i___parser_1a1b784f3d0ae5aa1078d8be8895f135be" kind="variable"><name>valid_codes_</name></member>
-    <member refid="class_s_c_p_i___parser_1a98edc4489648395279570f99263677ac" kind="variable"><name>callers_</name></member>
-    <member refid="class_s_c_p_i___parser_1af7d35ab7afd81bce9cb6ee1b3a604d2f" kind="variable"><name>tree_code_</name></member>
-    <member refid="class_s_c_p_i___parser_1a6b0c23b92c9d64668e4fbb472512cc40" kind="variable"><name>msg_buffer</name></member>
-    <member refid="class_s_c_p_i___parser_1acec496d6937a23f681dcea60f36f16c8" kind="function"><name>SetCommandTreeBase</name></member>
-    <member refid="class_s_c_p_i___parser_1a58e60c01618cf653628495580b77b460" kind="function"><name>SetCommandTreeBase</name></member>
-    <member refid="class_s_c_p_i___parser_1a2274b8b17b46c9ba014fed61fd789b1c" kind="function"><name>RegisterCommand</name></member>
-    <member refid="class_s_c_p_i___parser_1ab9eddf2fdf741664d47d9f00aa9d04b8" kind="function"><name>RegisterCommand</name></member>
-    <member refid="class_s_c_p_i___parser_1aebcc90dfd8044303edb5df2cb7ebbb6e" kind="function"><name>Execute</name></member>
-    <member refid="class_s_c_p_i___parser_1aa3f15b694caa52f41e7afbfd08bae77c" kind="function"><name>ProcessInput</name></member>
-    <member refid="class_s_c_p_i___parser_1a414fa2016689e5e0c82a7129db46e2ef" kind="function"><name>GetMessage</name></member>
-    <member refid="class_s_c_p_i___parser_1ad70e92ae99ede24212e3a8899a1d049c" kind="function"><name>PrintDebugInfo</name></member>
-    <member refid="class_s_c_p_i___parser_1ab3110f0075f29af0fac8e9e99e58bf22" kind="function"><name>AddToken</name></member>
-    <member refid="class_s_c_p_i___parser_1a80eb1ab408f07a9bc28298d95f3c3710" kind="function"><name>GetCommandCode</name></member>
-  </compound>
-  <compound refid="class_s_c_p_i___string___array" kind="class"><name>SCPI_String_Array</name>
-    <member refid="class_s_c_p_i___string___array_1a4fd461e0c8a5333b3eb1211874af61a9" kind="variable"><name>size_</name></member>
-    <member refid="class_s_c_p_i___string___array_1aca439076590132f16ac241bc4840d6b6" kind="variable"><name>values_</name></member>
-    <member refid="class_s_c_p_i___string___array_1ac590e8f3275c0e14a9df1a3bdb4cbdab" kind="function"><name>SCPI_String_Array</name></member>
-    <member refid="class_s_c_p_i___string___array_1a56b85135e4bb27864a1955c5a020b372" kind="function"><name>~SCPI_String_Array</name></member>
-    <member refid="class_s_c_p_i___string___array_1af838aa0cd5fc8937ed58599a1ab2e9cd" kind="function"><name>operator[]</name></member>
-    <member refid="class_s_c_p_i___string___array_1ac3ea456c13206c08abe997a47e36579c" kind="function"><name>Append</name></member>
-    <member refid="class_s_c_p_i___string___array_1adea7e540495974035cc2f4fed122e979" kind="function"><name>Pop</name></member>
-    <member refid="class_s_c_p_i___string___array_1aec158b60997a7b3d6899ef00f3aaa135" kind="function"><name>First</name></member>
-    <member refid="class_s_c_p_i___string___array_1a50751e9f768863d884dbfa6681e1bbe7" kind="function"><name>Last</name></member>
-    <member refid="class_s_c_p_i___string___array_1a80153f2aab64f399edb2db2b4fc8fc1f" kind="function"><name>Size</name></member>
-  </compound>
-  <compound refid="_vrekrer__scpi__parser_8cpp" kind="file"><name>Vrekrer_scpi_parser.cpp</name>
-  </compound>
-  <compound refid="_vrekrer__scpi__parser_8h" kind="file"><name>Vrekrer_scpi_parser.h</name>
-    <member refid="_vrekrer__scpi__parser_8h_1aab79fe7464d044ef4b53dc1e80d849ce" kind="define"><name>SCPI_ARRAY_SYZE</name></member>
-    <member refid="_vrekrer__scpi__parser_8h_1a6c9163f0ebdeaa917f2185881b9aa72c" kind="define"><name>SCPI_MAX_TOKENS</name></member>
-    <member refid="_vrekrer__scpi__parser_8h_1ab61722f229752fdbc2223d4765da2156" kind="define"><name>SCPI_MAX_COMMANDS</name></member>
-    <member refid="_vrekrer__scpi__parser_8h_1a593591e2b7f33e5e2f2dc59d8d6ee9ef" kind="typedef"><name>SCPI_C</name></member>
-    <member refid="_vrekrer__scpi__parser_8h_1ad32f1de4567459161aa6a2b2d84e0e36" kind="typedef"><name>SCPI_P</name></member>
-    <member refid="_vrekrer__scpi__parser_8h_1a194309a735975231e9aa3039511ebf98" kind="typedef"><name>SCPI_caller_t</name></member>
+  <compound refid="_a_d7766_8h" kind="file"><name>AD7766.h</name>
+    <member refid="_a_d7766_8h_1aab79fe7464d044ef4b53dc1e80d849ce" kind="define"><name>SCPI_ARRAY_SYZE</name></member>
+    <member refid="_a_d7766_8h_1a6c9163f0ebdeaa917f2185881b9aa72c" kind="define"><name>SCPI_MAX_TOKENS</name></member>
+    <member refid="_a_d7766_8h_1ab61722f229752fdbc2223d4765da2156" kind="define"><name>SCPI_MAX_COMMANDS</name></member>
   </compound>
   <compound refid="dir_5211f97ef3491fdbaab77dc04374af4a" kind="dir"><name>AD7766_Arduino</name>
   </compound>
