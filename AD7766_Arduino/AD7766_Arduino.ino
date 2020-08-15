@@ -1,62 +1,113 @@
+
+
 /*
- * Compare the speed of the Arduino's Serial communication to the native USB
- * 
- */
-#include <SPI.h>
-int testPin = 53;
-char adcData[512];
-int slaveSelectPin = 4;
-int syncPin = 9; // apply a negative pulse to initiate ADC sampling
-int dataReadyPin = 7; // The ADC will drive this pin
-bool firstSet = false;
-uint8_t dataCounter = 0;
+Vrekrer_scpi_parser library.
+SCPI Dimmer example.
+Demonstrates the control of the brightness of a LED using SCPI commands.
+Hardware required:
+A LED attached to digital pin 9
+or a resistor from pin 9 to pin 13 to use the built-in LED
+Commands:
+  *IDN?
+    Gets the instrument's identification string
+  SYSTem:LED:BRIGhtness <value>
+    Sets the LED's brightness to <value>
+    Valid values : 0 (OFF) to 10 (Full brightness)
+  SYSTem:LED:BRIGhtness?
+    Queries the current LED's brightness value
+  SYSTem:LED:BRIGhtness:INCrease
+    Increases the LED's brightness value by one
+  SYSTem:LED:BRIGhtness:DECrease
+    Decreases the LED's brightness value by one
+*/
 
 
-void setup() {
-  // put your setup code here, to run once:
-  
-  SerialUSB.begin(9600);
-  SPI.begin();
-  SPI.setClockDivider(8);
-  pinMode(dataReadyPin, INPUT);
-  pinMode(slaveSelectPin, OUTPUT);
-  pinMode(syncPin, OUTPUT);
-  delay(100);
-  digitalWrite(slaveSelectPin, LOW); // whenever the ADC is ready, we are ready.
-  
-  resetADC();
-  attachInterrupt(digitalPinToInterrupt(dataReadyPin), sampleADC, FALLING);
+#include "Arduino.h"
+#include "ArduinoDAQ.h"
+#include <Vrekrer_scpi_parser.h>
 
-  pinMode(testPin, OUTPUT);
-  digitalWrite(testPin, LOW);
+#define MAX_NUMBER_MEASUREMENTS 100
+
+SCPI_Parser my_instrument;
+ArduinoDAQ my_arduino;
+int brightness = 0;
+const int ledPin = 9;
+const int adcPin = A0;
+const int intensity[11] = {0, 3, 5, 9, 15, 24, 38, 62, 99, 159, 255};
+int8_t operationRegister = 0;
+uint8_t questionableStatusRegister = 0;
+uint8_t errorEventQueue = 0;
+uint16_t adcData[MAX_NUMBER_MEASUREMENTS];
+int numberADCMeasurements = 1;
+
+
+void setup()
+{
+    //my_instrument.RegisterCommand(F("*IDN?"), &Identify);
+    my_instrument.RegisterCommand(F("*RST"), &Reset);
+    my_instrument.RegisterCommand(F("*CLS"), &Clear);
+
+    my_instrument.SetCommandTreeBase("");
+    my_instrument.RegisterCommand("MEASure?", &measureADCData);
+    my_instrument.RegisterCommand("CONFigure", &configureADC);
+    my_instrument.RegisterCommand("FETCh?", &fetchADCData);
+
+  Serial.begin(9600);
+  pinMode(ledPin, OUTPUT);
+  pinMode(adcPin, INPUT);
+  pinMode(LED_BUILTIN, INPUT);
+  analogWrite(ledPin, 0);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  //adcData[0] = SPI.transfer(0);
-  //adcData[1] = SPI.transfer(0);
-  //adcData[2] = SPI.transfer(0);
-  SerialUSB.write(adcData);
-  //digitalWrite(testPin, LOW);
+void loop()
+{
+  my_arduino.ProcessInput(Serial, "\n");
 }
 
-void resetADC() {
-  digitalWrite(syncPin, LOW);
-  delay(1);
-  digitalWrite(syncPin, HIGH);
+/* BEGIN REQUIRED SCPI COMMANDS */
+/*
+void Identify(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
+  interface.println(F("Vrekrer,Arduino SCPI Dimmer,#00,v0.4"));
 }
-// right now it looks like we get stuck in an eternal interrupt loop. 
-// This is unfortunate.
-void sampleADC() {
-  digitalWrite(testPin, !digitalRead(testPin));
-  
-  //detachInterrupt(digitalPinToInterrupt(dataReadyPin));
-  
-  //adcData[dataCounter] = SPI.transfer(0);
-  //adcData[dataCounter] = SPI.transfer(0);
-  //dataCounter += 3;
-  adcData[dataCounter] = SPI.transfer(0);
-  //attachInterrupt(digitalPinToInterrupt(dataReadyPin), sampleADC, FALLING);
-  digitalWrite(testPin, !digitalRead(testPin));
-  
+*/
+void Reset(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
+  brightness = 0;
+  analogWrite(ledPin, intensity[brightness]);
 }
+
+void Clear(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
+  operationRegister = 0;
+  questionableStatusRegister = 0;
+  errorEventQueue = 0;
+}
+
+/* END REQUIRED SCPI COMMANDS */
+/* BEGIN DEVICE-SPECIFIC COMMANDS */
+
+
+/** According to the SCPI specification, the measurement process is broken down into several stages.
+// First, there is configuration of the measurement done via the CONFigure command. The INITiate then
+physically performs the measurement, and FETCh? does any necessary postprocessing and returns the data.
+I will implement MEASURE, CONFigure, and FETCH, as I don't see a purpose to implement INITiate or READ.
+*/
+
+/* Configures the number of ADC measurements we want to take */
+void configureADC(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
+  numberADCMeasurements = constrain(String(parameters[0]).toInt(), 1, MAX_NUMBER_MEASUREMENTS);
+}
+
+/* Iniates ADC measurements and returns the data over the specified interface */
+void measureADCData(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
+  for(int i=0; i < numberADCMeasurements; i++) {
+    adcData[i] = analogRead(adcPin);
+    interface.println(adcData[i]);
+  }
+}
+
+/* Fetches previously-measured ADC data */
+void fetchADCData(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
+  for(int i=0; i < numberADCMeasurements; i++) {
+    interface.println(adcData[i]);
+  }
+}
+/* END DEVICE SPECIFIC COMMANDS */
