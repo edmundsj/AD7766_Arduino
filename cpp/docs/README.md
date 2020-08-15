@@ -124,4 +124,34 @@ And, to insert all the generated documentation indo our index file, we need only
 ```
 Finally, if you want to upload documentation to the web via RTD (which I do), create a new project on [RTD](https://readthedocs.org/) with the git repository. Make sure the repository is public. Then, go to "Settings -> Admin -> Integrations", and make sure the github webhook is there.
 
-Unfortunately, it looks like none of this actually works, because why would it actually work?
+After that, you need to install the plugins on the RTD server. Fortunately (after you figure out how to do it) this is relatively simple: it involves putting two files in the root directory *of the github repository*: environment.yml and readthedocs.yml. The .readthedocs.yml should contain:
+```
+version: 2
+
+# Build documentation in the docs/ directory with Sphinx
+
+conda:
+  environment: environment.yml
+```
+This tells our RTD server to use conda as our package manager, and points to yet *another* file, "environment.yml", which is a configuration file for conda. This file should have the following:
+```
+name: base
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - breathe
+  - doxygen
+  - pip
+  - sphinx
+  - sphinx_rtd_theme
+  - sphinxcontrib-applehelp=1.0.2=py_0
+  - sphinxcontrib-devhelp=1.0.2=py_0
+  - sphinxcontrib-htmlhelp=1.0.3=py_0
+  - sphinxcontrib-jsmath=1.0.1=py_0
+  - sphinxcontrib-qthelp=1.0.3=py_0
+  - sphinxcontrib-serializinghtml=1.1.4=py_0
+  - pip:
+    - exhale
+```
+Upload this to your repository, and you should be done. Or just clone this repository. Much less painful.
