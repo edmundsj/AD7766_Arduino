@@ -35,7 +35,7 @@ void setup()
 {
     //my_instrument.RegisterCommand(F("*IDN?"), &Identify);
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(adcPin, INPUT);
 }
 

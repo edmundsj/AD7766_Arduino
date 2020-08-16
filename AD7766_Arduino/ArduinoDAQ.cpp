@@ -3,7 +3,7 @@
 #include <Vrekrer_scpi_parser.h>
   
 int ArduinoDAQ::adcPin;
-uint16_t ArduinoDAQ::adcData[MAX_NUMBER_MEASUREMENTS];
+uint8_t ArduinoDAQ::adcData[MAX_NUMBER_MEASUREMENTS];
 uint8_t ArduinoDAQ::operationRegister;
 uint8_t ArduinoDAQ::questionableStatusRegister;
 uint8_t ArduinoDAQ::errorEventQueue;
@@ -67,15 +67,17 @@ void ArduinoDAQ::configureADC(SCPI_Commands commands, SCPI_Parameters parameters
 
 /* Iniates ADC measurements and returns the data over the specified interface */
 void ArduinoDAQ::measureADCData(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
+  interface.write('#');
   for(int i=0; i < numberADCMeasurements; i++) {
     adcData[i] = analogRead(adcPin);
-    interface.println(adcData[i]);
+    interface.write(adcData[i]);
   }
 }
 
 /* Fetches previously-measured ADC data stored in the internal buffer */
 void ArduinoDAQ::fetchADCData(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
+  interface.write('#');
   for(int i=0; i < numberADCMeasurements; i++) {
-    interface.println(adcData[i]);
+    interface.write(adcData[i]);
   }
 }
