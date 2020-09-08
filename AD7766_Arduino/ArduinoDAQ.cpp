@@ -9,7 +9,7 @@ uint8_t ArduinoDAQ::questionableStatusRegister;
 uint8_t ArduinoDAQ::errorEventQueue;
 int ArduinoDAQ::numberADCMeasurements;
 
-/** SCPI String Array Constructor */
+/** Arduino DAQ Constructor */
 ArduinoDAQ::ArduinoDAQ(const int adcPin) {
   
   pinMode(ArduinoDAQ::adcPin, INPUT);

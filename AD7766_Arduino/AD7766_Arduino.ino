@@ -43,20 +43,3 @@ void loop()
 {
   my_arduino.ProcessInput(Serial, "\n");
 }
-
-/* BEGIN REQUIRED SCPI COMMANDS */
-/*
-void Identify(SCPI_Commands commands, SCPI_Parameters parameters, Stream& interface) {
-  interface.println(F("Vrekrer,Arduino SCPI Dimmer,#00,v0.4"));
-}
-*/
-
-
-/* END REQUIRED SCPI COMMANDS */
-/* BEGIN DEVICE-SPECIFIC COMMANDS */
-
-
-
-
-
-/* END DEVICE SPECIFIC COMMANDS */
