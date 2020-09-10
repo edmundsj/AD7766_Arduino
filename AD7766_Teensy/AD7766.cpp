@@ -12,16 +12,23 @@
 uint8_t AD7766::adcData[MAX_ADC_DATA] = {0, 0, 0};
 uint32_t AD7766::dataPointsToSample = 1;
 uint32_t AD7766::dataCounter = 0;
+uint32_t AD7766::synchronizationData[MAX_SYNCHRONIZATION_POINTS];
+uint16_t AD7766::synchronizationCounter;
+
 
 void AD7766::Reset() {
+  AD7766::synchronizationCounter = 0;
   AD7766::dataCounter = 0;
   AD7766::adcData[0] = 0;
   AD7766::adcData[1] = 0;
   AD7766::adcData[2] = 0;
   AD7766::dataPointsToSample = 1;
-  digitalWrite(SYNC_PIN, LOW);
+  digitalWrite(SYNC_PIN, LOW); // Perform the hardware ADC reset
   delay(1);
   digitalWrite(SYNC_PIN, HIGH);
+  for(int i=0; i< MAX_SYNCHRONIZATION_POINTS; i++) {
+    AD7766::synchronizationData[i] = 0;
+  }
 }
 
 void AD7766::Sample() {
@@ -35,8 +42,14 @@ void AD7766::Sample() {
   }
   else if(AD7766::dataCounter >= AD7766::dataPointsToSample) {
     detachInterrupt(digitalPinToInterrupt(DATA_READY_PIN));
+    detachInterrupt(digitalPinToInterrupt(EXTERNAL_SYNC_PIN));
     AD7766::dataCounter = 0;
   }
+}
+
+void AD7766::recordSync() {
+  synchronizationData[AD7766::synchronizationCounter] = AD7766::dataCounter;
+  AD7766::synchronizationCounter += 1;
 }
 
 void AD7766::Initialize() {

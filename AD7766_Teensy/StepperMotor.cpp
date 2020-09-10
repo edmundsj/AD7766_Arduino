@@ -1,10 +1,7 @@
 #include "StepperMotor.h"
 #include <Arduino.h>
-#include <elapsedMillis.h>
-IntervalTimer motorTimer;
 
 StepperMotor::StepperMotor(void) {
-  this->stepsRemaining = 0;
   
   pinMode(this->vddPin, OUTPUT);
   pinMode(this->directionPin, OUTPUT); 
@@ -17,40 +14,38 @@ StepperMotor::StepperMotor(void) {
   pinMode(this->ms1Pin, OUTPUT);
   pinMode(this->motorEnablePin, OUTPUT);
   this->Reset();
-  
-}
-void StepperMotor::beginRotation(int rotationSteps) {
-  if(rotationSteps < 0) {
-    this->motorDirection = 1;
-    digitalWrite(this->directionPin, HIGH);
-    rotationSteps *= -1;
-    
-  }
-  else {
-    this->motorDirection = 0;
-    digitalWrite(this->directionPin, LOW);
-  }
-  this->stepsRemaining = rotationSteps;
+ 
 }
 
-void StepperMotor::Rotate(int rotationSteps) {
-  this->motorPosition += rotationSteps;
-  if(rotationSteps < 0) {
-    this->motorDirection = 1;
-    digitalWrite(this->directionPin, HIGH);
-    rotationSteps *= -1;
-    
+void StepperMotor::beginRotation(int numberSteps) {
+  if(numberSteps < 0) {
+    this->setDirection(1);
+    numberSteps *= -1;
   }
   else {
-    this->motorDirection = 0;
-    digitalWrite(this->directionPin, LOW);
+    this->setDirection(0);
   }
-  
-  for(int i=0; i<rotationSteps; i++) {
-    digitalWrite(this->stepPin, LOW);
-    delay(this->motorPeriod);
-    digitalWrite(this->stepPin, HIGH);
+  this->stepsRemaining = numberSteps;
+  this->motorRotating = true;
+}
+
+void StepperMotor::Rotate(void) {
+  this->stepsRemaining -= 1;
+  if(this->motorDirection == 0) {
+    this->motorPosition += 1;
   }
+  else {
+    this->motorPosition -= 1;
+  }
+  digitalWrite(this->stepPin, LOW);
+  digitalWrite(this->stepPin, HIGH);
+}
+
+void StepperMotor::setDirection(int newDirection) {
+  this->motorDirection = newDirection;
+  if(newDirection == 0) digitalWrite(this->directionPin, LOW);
+  else if (newDirection == 1) digitalWrite(this->directionPin, HIGH);
+  else this->motorDirection = 0;
 }
 
 void StepperMotor::Disable() {
@@ -68,6 +63,8 @@ void StepperMotor::Reset() {
   this->motorDirection = 0;
   this->motorPeriod = 2;
   this->motorEnabled = 1;
+  this->stepsRemaining = 0;
+  this->motorRotating = false;
   digitalWrite(this->vddPin, HIGH);
   
   this->Enable();

@@ -5,6 +5,7 @@
 #include <scpiparser.h>
 
 StepperMotor motor;
+IntervalTimer motorTimer;
 
 scpi_error_t identify(struct scpi_parser_context* context, struct scpi_token* command)
 {
@@ -16,6 +17,7 @@ scpi_error_t identify(struct scpi_parser_context* context, struct scpi_token* co
 scpi_error_t resetDevice(struct scpi_parser_context* context, struct scpi_token* command)
 {
   detachInterrupt(digitalPinToInterrupt(DATA_READY_PIN));
+  detachInterrupt(digitalPinToInterrupt(EXTERNAL_SYNC_PIN));
   AD7766::Reset();
   motor.Reset();
   scpi_free_tokens(command);
@@ -24,8 +26,11 @@ scpi_error_t resetDevice(struct scpi_parser_context* context, struct scpi_token*
 
 scpi_error_t measure(struct scpi_parser_context* context, struct scpi_token* command)
 {
+  AD7766::synchronizationCounter = 0;
+  AD7766::dataCounter = 0;
   Serial.print("#");
   attachInterrupt(digitalPinToInterrupt(DATA_READY_PIN), AD7766::Sample, FALLING);
+  attachInterrupt(digitalPinToInterrupt(EXTERNAL_SYNC_PIN), AD7766::recordSync, RISING);
   scpi_free_tokens(command);
   return SCPI_SUCCESS;
 }
@@ -43,6 +48,27 @@ scpi_error_t configure(struct scpi_parser_context* context, struct scpi_token* c
 
   commandData = scpi_parse_numeric(args->value, args->length, 1, 1, 25e6);
   AD7766::dataPointsToSample = (unsigned long) (commandData.value);
+  scpi_free_tokens(command);
+  return SCPI_SUCCESS;
+}
+
+scpi_error_t sendSyncNumPoints(struct scpi_parser_context* context, struct scpi_token* command)
+{
+  Serial.println(AD7766::synchronizationCounter);
+  scpi_free_tokens(command);
+  return SCPI_SUCCESS;
+}
+
+/* Send the raw synchronization data - the measurements at which we have a L->H transition */
+scpi_error_t sendSyncData(struct scpi_parser_context* context, struct scpi_token* command)
+{
+  Serial.print('#');
+  for(int i = 0; i < AD7766::synchronizationCounter; i++) {
+    Serial.write(AD7766::synchronizationData[i] >> 16); // MSB first
+    Serial.write(AD7766::synchronizationData[i] >> 8);
+    Serial.write(AD7766::synchronizationData[i]); // LSB last. Only send 24 bits, should be enough for even 100s of data.
+  }
+  
   scpi_free_tokens(command);
   return SCPI_SUCCESS;
 }
@@ -89,7 +115,11 @@ scpi_error_t rotateMotor(struct scpi_parser_context* context, struct scpi_token*
   
   commandData = scpi_parse_numeric(args->value, args->length, 0, -1e6, 1e6);
   int motorSteps = int (commandData.value);
-  motor.Rotate(motorSteps);
+  
+  motor.beginRotation(motorSteps);
+  motorTimer.begin(interruptRotate, 1000*motor.motorPeriod);
+  
+  //motor.Rotate(motorSteps);
   
   scpi_free_tokens(command);
   return SCPI_SUCCESS;
@@ -139,4 +169,21 @@ scpi_error_t getMotorEnabled(struct scpi_parser_context* context, struct scpi_to
   Serial.println(motor.motorEnabled);
   scpi_free_tokens(command);
   return SCPI_SUCCESS;
+}
+
+scpi_error_t getMotorRotating(struct scpi_parser_context* context, struct scpi_token* command)
+{
+  Serial.println(int(motor.motorRotating));
+  scpi_free_tokens(command);
+  return SCPI_SUCCESS;
+}
+
+void interruptRotate(void) {
+  motor.Rotate();
+
+  // If we are out of steps or we get the command to stop rotating by having the motor disabled
+  if(motor.stepsRemaining <= 0 || motor.motorEnabled == false) {
+    motorTimer.end();
+    motor.motorRotating = false;
+  }
 }

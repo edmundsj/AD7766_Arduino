@@ -3,18 +3,22 @@
 class StepperMotor {
   public:
     StepperMotor();
-    void Rotate(int);
-    int motorPosition;
-    int motorDirection;
+    void beginRotation(int);
+    void setDirection(int);
+    void Rotate(void);
     void Enable(void);
     void Disable(void);
     void Reset(void);
     void setMotorSpeed(int);
+
     uint32_t motorPeriod;
     bool motorEnabled;
-    uint32_t stepsRemaining;
-  private:
+    int stepsRemaining; // this should be an int to avoid underflow errors.
+    bool motorRotating;
     const int directionPin = 1;
+    int motorPosition;
+    int motorDirection;
+  private:
     const int stepPin = 2;
     const int sleepPin = 3;
     const int resetPin = 4;
